@@ -1,0 +1,36 @@
+.cdc-flag-country-selected{
+  position: absolute;
+  margin-top: -23px;
+  margin-left: 10px;
+}
+
+#country-selected {
+  padding-left: 30px;
+}
+
+.cdc-section-dropdow{
+  width: 250px !important;
+  margin-left: 1em !important;
+}
+
+.cdc-content-dropdown{
+  position: absolute;
+  width: 250px !important;
+  z-index: 9999;
+  margin-top: 5px;
+  background-color: #b9bbbe;
+}
+
+.cdc-item-dropdown{
+  background-color: #b9bbbe;
+}
+
+.cdc-item-dropdown:hover{
+  background-color: #007bff !important;
+  color: white;
+}
+
+.cdc-load-empty-dropdown{
+  background-color: #b9bbbe;
+  color: white;
+}

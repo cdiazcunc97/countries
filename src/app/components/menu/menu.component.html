@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light bg-light justify-content-center bg-dark navbar-dark">
+  <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a (click)="changeComponent(true)" class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true">
+        Paises
+      </a>
+    </li>
+    <li class="cdc-section-dropdow">
+      <input [ngModel]="country" id="country-selected" (keyup)="searchCountries($event)" (focus)="searchCountryDropdown($event)" (focusout)="clearCountryDropdown()" class="form-control mr-sm-2" type="search"
+             placeholder="Escribir nombre del pais...">
+      <img class="cdc-flag-country-selected" src="{{ flagCountry }}" width="15">
+      <div *ngIf="countriesDropdown.length != 0" class="dropdown border rounded mr-sm-2 cdc-content-dropdown">
+        <button class="cdc-item-dropdown btn dropdown-item text-truncate" *ngFor="let country of countriesDropdown" (click)="changeComponent(false, country)">
+          <div class="row">
+            <div class="col col-md-2 text-truncate align-middle text-center m-0 p-0" style="padding-top: 10px !important;">
+              <img src="{{ country.flag }}" width="28px">
+            </div>
+            <div class="col col-md-10">
+              <div class="row">
+                <span class="col col-md-12 text-truncate m-0 p-0"> {{ country.name }}</span>
+                <span class="col col-md-12 text-truncate m-0 p-0"> {{ country.nativeName }}</span>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div *ngIf="isLoadingCountries" class="dropdown border rounded mr-sm-2 text-center cdc-content-dropdown">
+        <div class="dropdown-item cdc-load-empty-dropdown">
+          <img class="rounded-circle" src="../../../assets/public/imgs/loader.gif" width="25px">
+        </div>
+      </div>
+      <div *ngIf="!isLoadingCountries && hasError" class="dropdown border rounded mr-sm-2 text-center cdc-content-dropdown">
+        <div class="dropdown-item cdc-load-empty-dropdown text-truncate">
+          No se encontraron paises...
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>

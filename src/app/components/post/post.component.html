@@ -1,0 +1,22 @@
+<div class="row m-3">
+  <h4>Comentarios</h4>
+  <br/>
+  <div class="col col-md-12 p-1 border border-10 rounded bg-dark text-center" style="max-height: 300px !important; overflow-y: auto">
+    <div *ngFor="let post of posts; let i = index">
+      <div class="col-md-12 m-1">
+        <div class="card card-body m-0">
+          <h4 class="card-title">{{ post.title }}</h4>
+          <p class="card-text">{{ post.body }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center align-middle text-white" *ngIf="isLoading">
+      <img class="rounded-circle" src="../../../assets/public/imgs/loader.gif" width="100">
+      <p class="font-weight-bold">Cargando...</p>
+    </div>
+    <div class="text-center align-middle text-white" *ngIf="posts.length == 0 && !isLoading">
+      <p class="justify-content-center font-weight-bold">No se encuentra registros...</p>
+    </div>
+  </div>
+</div>
+

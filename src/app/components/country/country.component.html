@@ -1,0 +1,71 @@
+<div class="row m-3">
+  <h3>{{countryContent.title}}</h3>
+  <br/>
+  <div class="card-block flex-1 col col-md-12" style="max-height: 500px !important; overflow-y: auto">
+    <div class="text-center align-middle" *ngIf="isLoading">
+      <img class="rounded-circle" src="../../../assets/public/imgs/loader.gif" width="100">
+      <p class="font-weight-bold">Cargando...</p>
+    </div>
+    <table *ngIf="countryContent.isCountries; else other_content" class="table table-condensed table-hover text-center">
+      <thead>
+        <tr>
+          <th class="col-table-20"></th>
+          <th class="col-table-20">Código</th>
+          <th class="col-table-20">Nombre</th>
+          <th class="col-table-20">Nombre Nativo</th>
+          <th class="col-table-20">Capital</th>
+          <th class="col-table-20">Población</th>
+          <th class="col-table-20">Continente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countryContent.countries">
+          <td><img class="rounded-circle" src="{{ country.flag }}" width="25" height="25"></td>
+          <td>{{ country.numericCode }}</td>
+          <td>{{ country.nativeName }}</td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.capital }}</td>
+          <td>{{ country.population }}</td>
+          <td>{{ country.region }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #other_content>
+      <div class="row">
+        <div class="col col-md-6">
+          <h4>Descripción: </h4>
+          <div class="form-group">
+            <label><span class="font-weight-bold">Nombre Nativo:</span> {{ countryContent.country.nativeName }}</label>
+          </div>
+          <div class="form-group">
+            <label><span class="font-weight-bold">Capital:</span> {{ countryContent.country.capital }}</label>
+          </div>
+          <div class="form-group">
+            <label><span class="font-weight-bold">Region:</span> {{ countryContent.country.region }}</label>
+          </div>
+          <div class="form-group">
+            <label><span class="font-weight-bold">Sub-región:</span> {{ countryContent.country.subregion }}</label>
+          </div>
+          <div class="form-group">
+            <label><span class="font-weight-bold">Población:</span> {{ countryContent.country.population | number }}</label>
+          </div>
+        </div>
+        <div class="col col-md-6">
+          <h4>Bandera: </h4>
+          <div class="col col-md-12 text-center">
+            <img class="lazy img-fluid border border-10 border-dark" src="{{ countryContent.country.flag }}" width="200px">
+          </div>
+          <h3>Paises límites:</h3>
+          <div class="col col-md-12 text-center">
+            <div class="row">
+              <div class="col-md-3 mt-1" *ngFor="let country of countryContent.country.borders">
+                <img class="lazy img-fluid border border-10 border-dark" src="https://restcountries.eu/data/{{ country.toLocaleLowerCase() }}.svg" width="100px">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
