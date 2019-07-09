@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   private titleCountry: string = 'Paises';
   private isCountries: boolean = true;
-  private flagLoadingBase = location.origin + "/assets/public/imgs/loader.gif";
+  private flagLoadingBase = "/assets/public/imgs/loader.gif";
   public country = '';
   public flagCountry = this.flagLoadingBase;
   public countriesDropdown: ICountryDropdown[] = [];
